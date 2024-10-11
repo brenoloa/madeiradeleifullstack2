@@ -1,0 +1,25 @@
+<mat-card class="pedido-form-card">
+  <mat-card-header>
+    <mat-card-title>Pedido</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Móvel</mat-label>
+        <mat-select formControlName="movelId" required>
+          <mat-option *ngFor="let movel of moveis" [value]="movel.id">
+            {{movel.nome}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Quantidade</mat-label>
+        <input matInput type="number" formControlName="quantidade" required>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Fazer Pedido</button>
+      <button mat-raised-button type="button" (click)="onCancel()">Cancelar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
